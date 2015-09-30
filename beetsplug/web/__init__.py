@@ -187,6 +187,19 @@ def item_file(item_id):
     response.headers['Content-Length'] = os.path.getsize(item.path)
     return response
 
+@app.route('/item/<int:item_id>/favorite')
+def item_favorite(item_id):
+    update_favorite(item_id,1);
+    return ""
+
+def update_favorite(item_id,status):
+    with g.lib.transaction() as tx:   
+        result = tx.query("INSERT INTO item_attributes(entity_id,key,value) VALUES (?,?,?)",[item_id,"favorite",status]);
+
+@app.route('/item/<int:item_id>/unfavorite')
+def item_unfavorite(item_id):
+    update_favorite(item_id,0);
+    return ""
 
 @app.route('/item/query/<query:queries>')
 @resource_query('items')
