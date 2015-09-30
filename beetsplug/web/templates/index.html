@@ -87,9 +87,9 @@
                 <dt>Favorite</dt>
                 <dd>
                     <% if ((typeof favorite !== "undefined") && (favorite === true)) { %>
-                        <a href="#">Unfavorite</a> 
+                        <a id="unfavorite" href="#">Unfavorite</a> 
                     <% } else { %>
-                        <a href="#">Favorite</a> 
+                        <a id="favorite" href="#">Favorite</a> 
                     <% } %>
                 </dd>
                 <% if (lyrics) { %>

@@ -216,6 +216,22 @@ var ItemMainDetailView = Backbone.View.extend({
 var ItemExtraDetailView = Backbone.View.extend({
     tagName: "div",
     template: _.template($('#item-extra-detail-template').html()),
+    events: {
+        'click #favorite': 'favorite',
+        'click #unfavorite': 'unfavorite',
+    },
+    favorite: function(ev) {
+        console.log("favorite called");
+        $.get("/item/"+this.model.id+"/favorite");
+        this.model.set({"favorite": true});
+        this.render();
+    }, 
+    unfavorite: function(ev) {
+        console.log("unfavorite called");
+        $.get("/item/"+this.model.id+"/unfavorite");
+        this.model.set({"favorite": false});
+        this.render();
+    }, 
     render: function() {
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
