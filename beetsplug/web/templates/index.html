@@ -84,6 +84,14 @@
                 <dd>
                     <a target="_blank" class="download" href="/item/<%= id %>/file">download</a>
                 </dd>
+                <dt>Favorite</dt>
+                <dd>
+                    <% if ((typeof favorite !== "undefined") && (favorite === true)) { %>
+                        <a href="#">Unfavorite</a> 
+                    <% } else { %>
+                        <a href="#">Favorite</a> 
+                    <% } %>
+                </dd>
                 <% if (lyrics) { %>
                     <dt>Lyrics</dt>
                     <dd class="lyrics"><%= lyrics %></dd>
